@@ -1,7 +1,14 @@
+using Abbasimehdi_ir.Context;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<SiteContext>(options => options.UseSqlServer(
+    "Data Source=.;Initial Catalog=Abbasimehdi_DB;Integrated Security=true;TrustServerCertificate=True")
+);
 
 var app = builder.Build();
 
